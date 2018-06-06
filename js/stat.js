@@ -27,14 +27,19 @@ var getMaxElement = function (arr) {
   return Math.floor(maxElement);
 };
 
+var fillPlayerText = function (ctx, names, times, maxAmountText, indexText) {
+  ctx.fillStyle = '#000';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText(names, CLOUD_X + BAR_GAP + (BAR_GAP + BAR_WIDTH) * indexText, CLOUD_Y + CLOUD_HEIGHT - GAP * 2);
+  ctx.fillText(Math.round(times), CLOUD_X + BAR_GAP + (BAR_GAP + BAR_WIDTH) * indexText, CLOUD_Y + 2 * FONT_GAP + 4 * GAP + (BAR_HEIGHT - (BAR_HEIGHT * times) / maxAmountText));
+};
+
+var fillPlayerBar = function (ctx, times, maxAmountBar, indexBar) {
+  ctx.fillRect(CLOUD_X + BAR_GAP + (BAR_GAP + BAR_WIDTH) * indexBar, CLOUD_Y + 2 * FONT_GAP + 4 * GAP + (BAR_HEIGHT - (BAR_HEIGHT * times) / maxAmountBar), BAR_WIDTH, (BAR_HEIGHT * times) / maxAmountBar);
+};
+
 var randomColor = function (names) {
-  var colorBar = names[0];
-
-  for (var i = 0; i < names.length; i++) {
-    colorBar = 'rgba' + '(' + '15, ' + '82, ' + '186, ' + String(0.3 + i / 10) + ')';
-  }
-
-  return colorBar;
+  return (names === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba' + '(' + '15, ' + '82, ' + '186, ' + Math.random() + ')';
 };
 
 window.renderStatistics = function (ctx, names, times) {
@@ -50,13 +55,9 @@ window.renderStatistics = function (ctx, names, times) {
 
   var maxTime = getMaxElement(times);
 
-  // Имена и время игроков
   for (var i = 0; i < names.length; i++) {
-    ctx.fillStyle = '#000';
-    ctx.textBaseline = 'bottom';
-    ctx.fillText(names[i], CLOUD_X + BAR_GAP + (BAR_GAP + BAR_WIDTH) * i, CLOUD_Y + CLOUD_HEIGHT - GAP * 2);
-    ctx.fillText(Math.round(times[i]), CLOUD_X + BAR_GAP + (BAR_GAP + BAR_WIDTH) * i, CLOUD_Y + 2 * FONT_GAP + 4 * GAP + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime));
-    ctx.fillStyle = (names[i] === 'Вы') ? 'rgba(255, 0, 0, 1)' : randomColor;
-    ctx.fillRect(CLOUD_X + BAR_GAP + (BAR_GAP + BAR_WIDTH) * i, CLOUD_Y + 2 * FONT_GAP + 4 * GAP + (BAR_HEIGHT - (BAR_HEIGHT * times[i]) / maxTime), BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
+    fillPlayerText(ctx, names[i], times[i], maxTime, i); // Имена и статистика (время) игроков
+    ctx.fillStyle = randomColor(names[i]); // Цвета гистограмм
+    fillPlayerBar(ctx, times[i], maxTime, i); // Отрисовка гистограмм игроков
   }
 };
