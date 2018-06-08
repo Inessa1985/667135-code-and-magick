@@ -16,8 +16,7 @@ var COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)
 var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var getRandomElement = function (arr) {
-  var item = Math.floor(Math.random() * (arr.length - 1));
-  return arr[item];
+  return arr[Math.floor(Math.random() * (arr.length - 1))];
 };
 
 var createWizardData = function () {
@@ -43,7 +42,7 @@ var renderWizard = function (wizard) {
 var creatList = function (wizardsCount) {
   var fragment = document.createDocumentFragment();
   for (var i = 0; i < wizardsCount; i++) {
-    fragment.appendChild(renderWizard(createWizardData));
+    fragment.appendChild(renderWizard(createWizardData()));
   }
 
   return fragment;
