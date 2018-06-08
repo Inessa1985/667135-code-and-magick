@@ -39,7 +39,7 @@ var fillPlayerBar = function (ctx, time, maxAmountBar, indexBar) {
 };
 
 var randomColor = function (name) {
-  return (name === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba' + '(' + '15, ' + '82, ' + '186, ' + Math.random() + ')';
+  return (name === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba(15, 82, 186, ' + Math.random() + ')';
 };
 
 window.renderStatistics = function (ctx, names, times) {
