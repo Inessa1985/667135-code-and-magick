@@ -128,28 +128,26 @@ userNameInput.addEventListener('input', function (evt) {
 
 
 // Изменение цвета глаз, плащей и фаерболов при нажатии на персонажи
-var fillColor = function (colorsArray, targetElement, targetInput) {
-  var color = colorsArray[getRandomElement(colorsArray)];
+var getColorWizard = function (colorArray) {
+  var randomColor = Math.floor(Math.random() * colorArray.length);
 
-  targetElement.style = 'fill: ' + color + ';';
-  targetInput.value = color.toString();
-};
-
-var changeBackground = function (colorsArray, targetElement, targetInput) {
-  var color = colorsArray[getRandomElement(colorsArray)];
-
-  targetElement.style = 'background-color: ' + color + ';';
-  targetInput.value = color.toString();
+  return colorArray[randomColor];
 };
 
 wizardCoat.addEventListener('click', function () {
-  fillColor(COAT_COLOR, wizardCoat, wizardCoatInput);
+  var color = getColorWizard(COAT_COLOR);
+  wizardCoat.style.fill = color;
+  wizardCoatInput.value = color;
 });
 
 wizardEyes.addEventListener('click', function () {
-  fillColor(EYES_COLOR, wizardEyes, wizardEyesInput);
+  var color = getColorWizard(EYES_COLOR);
+  wizardEyes.style.fill = color;
+  wizardEyesInput.value = color;
 });
 
 fireball.addEventListener('click', function () {
-  changeBackground(FIREBALL_COLORS, fireball, fireballInput);
+  var color = getColorWizard(FIREBALL_COLORS);
+  fireball.style.background = color;
+  fireballInput.value = color;
 });
