@@ -63,16 +63,12 @@
   <div class="demo"></div>
 
   <div class="setup-open">
-    <img src="./img/user-1.jpg" class="setup-open-icon">
+    <img src="./img/user-1.jpg" class="setup-open-icon" tabindex="0">
   </div>
 </header>
 
 <div class="overlay setup hidden">
-  <form class="setup-wizard-form"
-        method="post"
-        enctype="multipart/form-data"
-        autocomplete="off">
-
+  <form class="setup-wizard-form" method="post" enctype="multipart/form-data" action="https://js.dump.academy/code-and-magick" autocomplete="off">
     <div class="setup-title">
       <div class="setup-user">
         <div class="upload">
@@ -80,16 +76,11 @@
           <input type="file" name="avatar">
         </div>
         <label>
-          <input type="text" name="username"
-                 maxlength="25" required
-                 class="setup-user-name" value="Синий Пендальф"/>
+          <input type="text" class="setup-user-name" name="username" minlength="2" maxlength="25" value="Синий Пендальф" required/>
         </label>
       </div>
-
-      <span class="setup-close">&times;</span>
+      <span class="setup-close" tabindex="0">&times;</span>
     </div>
-
-
     <div class="setup-artifacts-shop">
       <div class="setup-artifacts-cell"><img src="img/icon-star.png" alt="Star" width="65" height="50" draggable="true">
       </div>
@@ -102,7 +93,6 @@
       <div class="setup-artifacts-cell"></div>
       <div class="setup-artifacts-cell"></div>
     </div>
-
     <div class="setup-player">
       <div class="setup-wizard-appearance">
         <div class="setup-wizard-wrap">
@@ -118,12 +108,10 @@
         <input type="hidden" name="coat-color" value="rgb(101, 137, 164)">
         <input type="hidden" name="eyes-color" value="black">
       </div>
-
       <div class="setup-fireball-wrap">
         <div class="setup-fireball"></div>
         <input type="hidden" name="fireball-color" value="#ee4830">
       </div>
-
       <div class="setup-artifacts" dropzone="move">
         <div class="setup-artifacts-cell"></div>
         <div class="setup-artifacts-cell"></div>
@@ -146,7 +134,6 @@
         <div class="setup-artifacts-cell"></div>
       </div>
     </div>
-
     <div class="setup-footer">
       <div class="setup-similar hidden">
 
@@ -155,14 +142,14 @@
         <div class="setup-similar-list"><!--Список похожих персонажей--></div>
       </div>
 
-      <button class="button setup-submit">Сохранить</button>
+      <button class="button setup-submit" type="submit">Сохранить</button>
     </div>
   </form>
 </div>
 
 <footer>
   <p><a href="http://htmlacademy.ru" class="footer-link"><img src="img/htmlacademy-logo.png" alt="HTML Academy"
-                                                              width="130">Сделано в HTML Academy</a>в 2017 году</p>
+                    width="130">Сделано в HTML Academy</a>в 2017 году</p>
 </footer>
 
 <template id="similar-wizard-template" style="display: none">
