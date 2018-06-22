@@ -5,12 +5,12 @@
   var setup = document.querySelector('.setup');
   var dialogHandler = setup.querySelector('.upload'); // Находит элемент для перетаскивания диалогового окна
 
-  dialogHandler.addEventListener('mousedown', function (downEvt) {
-    downEvt.preventDefault();
+  dialogHandler.addEventListener('mousedown', function (evt) {
+    evt.preventDefault();
 
     var startCoords = {
-      x: downEvt.clientX,
-      y: downEvt.clientY
+      x: evt.clientX,
+      y: evt.clientY
     };
 
     var dragged = false;
